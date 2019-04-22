@@ -232,7 +232,6 @@ public class RecentsModel extends TaskStackChangeListener {
 
     public void onStart() {
         mRecentsTaskLoader.startLoader(mContext);
-        mRecentsTaskLoader.getHighResThumbnailLoader().setVisible(true);
     }
 
     public void onTrimMemory(int level) {
@@ -254,6 +253,10 @@ public class RecentsModel extends TaskStackChangeListener {
                     "Failed to notify SysUI of overview shown from " + (fromHome ? "home" : "app")
                             + ": ", e);
         }
+    }
+
+    public void resetAssistCache() {
+        mCachedAssistData.clear();
     }
 
     @WorkerThread
